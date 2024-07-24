@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: eprintshttpd.dockerfile
       args:
-        EPRINTS_HOSTNAME: localhost
+        EPRINTS_HOSTNAME: vmi1976438.contaboserver.net
     ports:
       - "80:80"
     container_name: eprintshttpd

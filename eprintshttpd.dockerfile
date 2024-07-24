@@ -2,7 +2,7 @@ FROM almalinux:8
 
 LABEL ORIGINAL MAINTAINER="Justin Bradley <justin@soton.ac.uk>"
 
-ARG EPRINTS_HOSTNAME=localhost
+ARG EPRINTS_HOSTNAME=vmi1976438.contaboserver.net
 ENV EPRINTS_HOSTNAME="${EPRINTS_HOSTNAME}"
 
 RUN dnf clean all
