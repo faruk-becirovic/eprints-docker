@@ -1,32 +1,15 @@
-version: '3.4.4'
 services:
-  eprintsdb:
-    image: mariadb:10.4.8
-    command: --default-authentication-plugin=mysql_native_password
+  eprints:
+    image: debian:bookworm
     restart: always
     volumes:
-      - ./mariadb:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=test
-      - MYSQL_DATABASE=pub
-      - MYSQL_USER=eprints
-      - MYSQL_PASSWORD=test
-  eprintshttpd:
-    build:
-      context: .
-      dockerfile: eprintshttpd.dockerfile
-      args:
-        EPRINTS_HOSTNAME: localhost
-    ports:
-      - "80:80"
-    container_name: eprintshttpd
-    volumes:
+      - mysql:/var/lib/mysql
       - eprints:/usr/share/eprints
       - ./shared:/var/shared
-    command: "httpd -k start -DFOREGROUND"
+    ports:
+      - "80:80"
+    container_name: eprints
 volumes:
   eprints:
-  mariadb:
+  mysql:
   shared:
