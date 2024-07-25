@@ -9,6 +9,7 @@ services:
     container_name: eprintsdb
     volumes:
       - mariadb:/var/lib/mysql
+    command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
   eprintshttpd:
     build:
       context: .
